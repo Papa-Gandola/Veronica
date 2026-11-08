@@ -1,0 +1,67 @@
+# Veronica — торговый агент на споте OKX.
+#   freqtrade — торговый движок (стратегии, ордера, Telegram-команды)
+#   brain     — надзор, дневник, вечерний разбор, смена стратегий, GandolaChat
+#
+# Запуск:  cp .env.example .env  →  заполнить  →  docker compose up -d
+# Логи:    docker compose logs -f freqtrade brain
+
+services:
+  init:
+    # создаёт user_data/state/active.json при первом запуске
+    image: alpine:3.20
+    volumes:
+      - ./user_data:/freqtrade/user_data
+    command: >
+      sh -c "mkdir -p /freqtrade/user_data/state /freqtrade/user_data/logs
+      && [ -f /freqtrade/user_data/state/active.json ]
+      || cp /freqtrade/user_data/state.default.json /freqtrade/user_data/state/active.json"
+
+  freqtrade:
+    image: freqtradeorg/freqtrade:2025.10
+    restart: unless-stopped
+    depends_on:
+      init:
+        condition: service_completed_successfully
+    volumes:
+      - ./user_data:/freqtrade/user_data
+    # Порт API наружу НЕ пробрасываем: brain ходит по внутренней сети compose.
+    expose:
+      - "8080"
+    env_file: .env
+    environment:
+      # Секреты и режим — из .env через переопределения FREQTRADE__*
+      FREQTRADE__DRY_RUN: ${DRY_RUN:-true}
+      FREQTRADE__DRY_RUN_WALLET: ${INITIAL_CAPITAL:-100}
+      FREQTRADE__EXCHANGE__KEY: ${OKX_API_KEY:-}
+      FREQTRADE__EXCHANGE__SECRET: ${OKX_API_SECRET:-}
+      FREQTRADE__EXCHANGE__PASSWORD: ${OKX_API_PASSPHRASE:-}
+      FREQTRADE__TELEGRAM__ENABLED: ${TELEGRAM_ENABLED:-false}
+      FREQTRADE__TELEGRAM__TOKEN: ${TELEGRAM_TOKEN:-}
+      FREQTRADE__TELEGRAM__CHAT_ID: ${TELEGRAM_CHAT_ID:-}
+      FREQTRADE__API_SERVER__USERNAME: ${FT_API_USERNAME:-veronica}
+      FREQTRADE__API_SERVER__PASSWORD: ${FT_API_PASSWORD:?FT_API_PASSWORD не задан в .env}
+      FREQTRADE__API_SERVER__JWT_SECRET_KEY: ${FT_JWT_SECRET:?FT_JWT_SECRET не задан в .env}
+      FREQTRADE__API_SERVER__WS_TOKEN: ${FT_WS_TOKEN:-}
+    command: >
+      trade
+      --logfile /freqtrade/user_data/logs/freqtrade.log
+      --config /freqtrade/user_data/config.json
+      --config /freqtrade/user_data/state/active.json
+      --strategy-path /freqtrade/user_data/strategies
+
+  brain:
+    build: ./brain
+    restart: unless-stopped
+    depends_on:
+      - freqtrade
+    volumes:
+      - ./user_data:/freqtrade/user_data
+      - brain_data:/app/data
+    env_file: .env
+    environment:
+      FT_API_URL: http://freqtrade:8080
+      FT_USER_DATA: /freqtrade/user_data
+      BRAIN_DATA_DIR: /app/data
+
+volumes:
+  brain_data:

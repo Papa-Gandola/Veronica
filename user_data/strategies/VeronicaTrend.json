@@ -1,0 +1,31 @@
+{
+  "strategy_name": "VeronicaTrend",
+  "params": {
+    "roi": {
+      "0": 0.35
+    },
+    "max_open_trades": {
+      "max_open_trades": 3
+    },
+    "buy": {
+      "adx_min": 23,
+      "atr_mult": 0.9,
+      "rsi_entry": 47
+    },
+    "sell": {
+      "exit_ema": 34
+    },
+    "protection": {},
+    "stoploss": {
+      "stoploss": -0.097
+    },
+    "trailing": {
+      "trailing_stop": true,
+      "trailing_stop_positive": 0.079,
+      "trailing_stop_positive_offset": 0.13,
+      "trailing_only_offset_is_reached": true
+    }
+  },
+  "ft_stratparam_v": 1,
+  "export_time": "2026-11-07 23:45:13.945630+00:00"
+}

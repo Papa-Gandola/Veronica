@@ -1,0 +1,32 @@
+{
+  "strategy_name": "VeronicaMeanRev",
+  "params": {
+    "roi": {
+      "0": 0.08,
+      "48": 0.04,
+      "120": 0.015
+    },
+    "max_open_trades": {
+      "max_open_trades": 3
+    },
+    "buy": {
+      "bb_std": 2.6,
+      "rsi_entry": 32
+    },
+    "sell": {
+      "rsi_exit": 57
+    },
+    "protection": {},
+    "stoploss": {
+      "stoploss": -0.092
+    },
+    "trailing": {
+      "trailing_stop": true,
+      "trailing_stop_positive": 0.064,
+      "trailing_stop_positive_offset": 0.155,
+      "trailing_only_offset_is_reached": true
+    }
+  },
+  "ft_stratparam_v": 1,
+  "export_time": "2026-11-07 23:46:43.992479+00:00"
+}

@@ -1,0 +1,4 @@
+{
+    "_comment": "Этот файл переписывает brain при смене стратегии. Копия user_data/state.default.json создаётся при первом старте.",
+    "strategy": "VeronicaDaily"
+}

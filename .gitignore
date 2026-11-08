@@ -1,0 +1,39 @@
+# секреты и локальное состояние
+.env
+*.env
+!.env.example
+user_data/config.local.json
+
+# данные и результаты freqtrade (качаются/генерируются заново)
+user_data/data/
+user_data/logs/
+user_data/backtest_results/*
+!user_data/backtest_results/.gitkeep
+!user_data/backtest_results/summary.json
+user_data/hyperopt_results/
+user_data/plot/
+user_data/notebooks/
+user_data/*.sqlite
+user_data/*.sqlite-shm
+user_data/*.sqlite-wal
+user_data/tradesv3*.sqlite*
+user_data/strategies/__pycache__/
+
+# мозг
+brain/data/
+brain/*.sqlite*
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+*.egg-info/
+
+# разное
+.DS_Store
+*.log
+user_data/state/
+user_data/hyperopt.lock
