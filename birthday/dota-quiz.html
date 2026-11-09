@@ -22,27 +22,19 @@ body{
     radial-gradient(ellipse at 80% 100%, rgba(91,191,82,.14), transparent 55%),
     radial-gradient(ellipse at 50% 50%, rgba(232,184,74,.06), transparent 70%);
 }
-body::before{ /* тонкая сетка как на карте */
-  content:""; position:fixed; inset:0; pointer-events:none; opacity:.25;
-  background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
-  background-size:48px 48px;
-}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.25;
+  background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:48px 48px}
 h1,h2,h3,.rs{font-family:'Russo One','Rubik',sans-serif;letter-spacing:.04em;text-transform:uppercase}
 .screen{position:fixed;inset:0;display:none;align-items:center;justify-content:center;flex-direction:column;padding:24px 16px;text-align:center;overflow-y:auto}
 .screen>*{flex:none}
 .screen.active{display:flex;animation:fadeIn .5s ease}
 @keyframes fadeIn{from{opacity:0;transform:scale(.98)}to{opacity:1;transform:none}}
-.btn{
-  font-family:'Russo One',sans-serif;text-transform:uppercase;letter-spacing:.08em;
-  border:1px solid rgba(255,255,255,.15);color:#fff;cursor:pointer;
+.btn{font-family:'Russo One',sans-serif;text-transform:uppercase;letter-spacing:.08em;border:1px solid rgba(255,255,255,.15);color:#fff;cursor:pointer;
   padding:16px 42px;font-size:18px;border-radius:4px;position:relative;overflow:hidden;
-  background:linear-gradient(180deg,#4caf50,#2e7d32);box-shadow:0 0 30px rgba(76,175,80,.35),inset 0 1px 0 rgba(255,255,255,.3);
-  transition:transform .1s,filter .2s;
-}
+  background:linear-gradient(180deg,#4caf50,#2e7d32);box-shadow:0 0 30px rgba(76,175,80,.35),inset 0 1px 0 rgba(255,255,255,.3);transition:transform .1s,filter .2s}
 .btn:hover{filter:brightness(1.15);transform:translateY(-1px)}
 .btn:active{transform:translateY(1px)}
 .btn.gold{background:linear-gradient(180deg,#f0c75e,#b8862b);color:#1a1205;box-shadow:0 0 40px rgba(232,184,74,.45)}
-.btn.red{background:linear-gradient(180deg,#e74c3c,#962d22);box-shadow:0 0 30px rgba(231,76,60,.35)}
 .btn::after{content:"";position:absolute;top:0;left:-120%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg);animation:shine 3s infinite}
 @keyframes shine{0%{left:-120%}40%{left:140%}100%{left:140%}}
 .muted{color:var(--muted)}
@@ -53,20 +45,19 @@ h1,h2,h3,.rs{font-family:'Russo One','Rubik',sans-serif;letter-spacing:.04em;tex
 #intro h1{font-size:clamp(34px,7vw,72px);line-height:1;background:linear-gradient(180deg,#fff2c4,#e8b84a 50%,#9a6a16);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 4px 18px rgba(232,184,74,.35))}
 #intro .sub{margin-top:14px;font-size:clamp(14px,2.4vw,20px);color:var(--muted)}
 .ornament{width:min(520px,90vw);height:2px;margin:26px auto;background:linear-gradient(90deg,transparent,var(--gold),transparent);position:relative}
-.ornament::before,.ornament::after{content:"◆";position:absolute;top:-11px;color:var(--gold);font-size:14px}
-.ornament::before{left:calc(50% - 7px)}
-.ornament::after{display:none}
+.ornament::before{content:"◆";position:absolute;top:-11px;left:calc(50% - 7px);color:var(--gold);font-size:14px}
 .logo{font-size:72px;filter:drop-shadow(0 0 24px rgba(232,184,74,.5));animation:float 4s ease-in-out infinite}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 .menu-note{margin-top:28px;font-size:13px;color:var(--muted)}
 .menu-note b{color:var(--text)}
+.ticker{margin-top:10px;font-size:12px;color:#7d8699;min-height:18px}
 
 /* ===== MATCHMAKING ===== */
 #search .box{padding:28px 40px;min-width:min(420px,92vw)}
 #search .timer{font-family:'Russo One';font-size:40px;color:var(--gold)}
 .dots::after{content:"";animation:dots 1.5s steps(4) infinite}
 @keyframes dots{0%{content:""}25%{content:"."}50%{content:".."}75%{content:"..."}}
-#accept{display:none;padding:30px 40px;border:2px solid var(--green);box-shadow:0 0 60px rgba(63,185,80,.5);animation:pulse 1s infinite}
+#accept{display:none;padding:30px 40px;border:2px solid var(--green);animation:pulse 1s infinite}
 @keyframes pulse{0%,100%{box-shadow:0 0 30px rgba(63,185,80,.4)}50%{box-shadow:0 0 70px rgba(63,185,80,.8)}}
 #accept h2{color:var(--green2);font-size:30px;margin-bottom:8px}
 #accept .cnt{font-size:14px;color:var(--muted);margin-top:14px}
@@ -81,6 +72,11 @@ h1,h2,h3,.rs{font-family:'Russo One','Rubik',sans-serif;letter-spacing:.04em;tex
 .hero .nm{font-family:'Russo One';margin-top:10px;font-size:15px}
 .hero .rl{font-size:12px;color:var(--muted);margin-top:4px}
 #lockBtn[disabled]{opacity:.4;filter:grayscale(1);cursor:not-allowed;transform:none}
+#pickSplash{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;pointer-events:none;z-index:30;opacity:0}
+#pickSplash.go{animation:splash 1.1s ease forwards}
+#pickSplash .big{font-size:clamp(120px,30vw,240px);filter:drop-shadow(0 0 60px rgba(232,184,74,.9))}
+#pickSplash .nm{font-family:'Russo One';font-size:clamp(22px,5vw,40px);color:var(--gold2);text-transform:uppercase;letter-spacing:.2em;text-shadow:0 0 20px rgba(232,184,74,.8)}
+@keyframes splash{0%{opacity:0;transform:scale(.3)}20%{opacity:1;transform:scale(1.1)}35%{transform:scale(1)}75%{opacity:1}100%{opacity:0;transform:scale(1.2)}}
 
 /* ===== LOADING ===== */
 .bar{width:min(520px,90vw);height:14px;background:#0a0c10;border:1px solid var(--line);border-radius:7px;overflow:hidden;margin-top:18px}
@@ -90,29 +86,76 @@ h1,h2,h3,.rs{font-family:'Russo One','Rubik',sans-serif;letter-spacing:.04em;tex
 /* ===== QUIZ ===== */
 #quiz{justify-content:flex-start;padding:0}
 .hud{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 18px;background:linear-gradient(180deg,rgba(10,12,16,.98),rgba(10,12,16,.75));border-bottom:1px solid var(--line);font-family:'Russo One';font-size:14px}
-.hud .kda span{margin:0 4px}
 .hud .k{color:var(--green2)}.hud .d{color:var(--red2)}.hud .a{color:#8fc1ff}
 .hud .gold-cnt{color:var(--gold)}
 .hud .clock{font-size:22px;color:#fff;letter-spacing:.1em}
 .hud .qn{color:var(--muted);font-size:12px}
 .tbar{width:100%;height:6px;background:#0a0c10}
 .tbar i{display:block;height:100%;width:100%;background:linear-gradient(90deg,var(--green),var(--gold),var(--red));transition:width 1s linear}
-.quizbody{flex:1;width:100%;display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:20px;padding:22px clamp(14px,4vw,48px);align-items:center;max-width:1200px}
+.quizbody{flex:1;width:100%;display:grid;grid-template-columns:minmax(0,1fr) 240px;grid-template-rows:auto 1fr;gap:16px 20px;padding:14px clamp(14px,4vw,48px) 22px;max-width:1200px;align-content:start;align-items:start}
+.arena{grid-column:1/-1}
 @media (max-width:820px){
-  #quiz{overflow-y:auto}
-  .quizbody{grid-template-columns:1fr;align-content:start;padding-top:14px}
-  .quizbody .side{order:-1;flex-direction:row;align-items:stretch;gap:10px}
+  .quizbody{grid-template-columns:1fr}
+  .quizbody .side{flex-direction:row;align-items:stretch;gap:10px}
   .quizbody .portrait{aspect-ratio:auto;width:110px;height:140px;flex:none}
   .quizbody .feed{min-height:0;flex:1;align-self:center}
   .quizbody .portrait .ph span{display:none}
 }
-.qcard{padding:30px 28px;text-align:left}
+/* --- арена --- */
+.arena{position:relative;height:215px;border:1px solid var(--line);border-radius:8px;overflow:hidden;
+  background:radial-gradient(ellipse at 50% 120%,rgba(91,191,82,.25),transparent 60%),linear-gradient(180deg,#0e1420 0%,#121a26 60%,#1b2a1c 100%)}
+.arena.boss{background:radial-gradient(ellipse at 50% 120%,rgba(214,74,58,.45),transparent 60%),linear-gradient(180deg,#160c0c 0%,#1f1010 60%,#2a1414 100%)}
+.arena .ground{position:absolute;left:0;right:0;bottom:0;height:34px;background:linear-gradient(180deg,#1e3320,#0f1a12);border-top:1px solid rgba(255,255,255,.08)}
+.arena.boss .ground{background:linear-gradient(180deg,#3a1a1a,#1a0c0c)}
+.arena .river{position:absolute;left:50%;top:0;bottom:0;width:2px;background:linear-gradient(180deg,transparent,rgba(143,193,255,.25),transparent)}
+.fighter{position:absolute;bottom:26px;width:140px;display:flex;flex-direction:column;align-items:center;transition:transform .25s cubic-bezier(.3,1.4,.5,1)}
+.fighter.me{left:8%}
+.fighter.en{right:8%}
+.fighter .hp{width:110px;height:8px;background:#000;border:1px solid #000;border-radius:3px;overflow:hidden;margin-bottom:6px}
+.fighter .hp i{display:block;height:100%;width:100%;background:linear-gradient(180deg,#6ee07a,#2e7d32);transition:width .25s}
+.fighter.en .hp i{background:linear-gradient(180deg,#ff6b5b,#962d22)}
+.fighter .spr{font-size:64px;line-height:1;filter:drop-shadow(0 8px 10px rgba(0,0,0,.7));animation:idle 1.6s ease-in-out infinite;transform-origin:50% 100%}
+.fighter.en .spr{transform:scaleX(-1);animation-name:idleEn;animation-delay:.4s}
+.fighter.boss .spr{font-size:82px}
+.fighter .nm{font-family:'Russo One';font-size:11px;margin-top:6px;letter-spacing:.06em;color:var(--text);white-space:nowrap;background:rgba(0,0,0,.5);padding:2px 8px;border-radius:3px}
+.fighter.en .nm{color:#ffb3a8}
+.fighter .lvl{position:absolute;top:-4px;right:0;font-family:'Russo One';font-size:10px;color:var(--gold);background:rgba(0,0,0,.7);padding:1px 5px;border-radius:3px;border:1px solid var(--gold)}
+@keyframes idle{0%,100%{transform:translateY(0) scaleY(1)}50%{transform:translateY(-4px) scaleY(1.03)}}
+@keyframes idleEn{0%,100%{transform:translateY(0) scaleX(-1)}50%{transform:translateY(-4px) scaleX(-1) scaleY(1.03)}}
+.fighter.me.lunge{transform:translateX(min(42vw,420px))}
+.fighter.en.lunge{transform:translateX(max(-42vw,-420px))}
+.fighter.hit .spr{animation:hitAnim .35s}
+.fighter.en.hit .spr{animation:hitAnimEn .35s}
+@keyframes hitAnim{0%{filter:brightness(4) drop-shadow(0 0 20px #fff)}30%{transform:translateX(-14px) rotate(-10deg)}60%{transform:translateX(8px)}100%{filter:none}}
+@keyframes hitAnimEn{0%{filter:brightness(4) drop-shadow(0 0 20px #fff);transform:scaleX(-1)}30%{transform:scaleX(-1) translateX(-14px) rotate(10deg)}60%{transform:scaleX(-1) translateX(8px)}100%{filter:none;transform:scaleX(-1)}}
+.fighter.dead .spr{animation:none;transform:rotate(90deg) translateY(10px);opacity:.35;filter:grayscale(1)}
+.fighter.en.dead .spr{transform:scaleX(-1) rotate(-90deg) translateY(10px)}
+.fighter.spawn .spr{animation:spawn .5s cubic-bezier(.2,1.6,.4,1)}
+@keyframes spawn{0%{transform:scale(0) translateY(-80px);opacity:0}100%{transform:scale(1);opacity:1}}
+.fighter.en.spawn .spr{animation-name:spawnEn}
+@keyframes spawnEn{0%{transform:scaleX(-1) scale(0) translateY(-80px);opacity:0}100%{transform:scaleX(-1) scale(1);opacity:1}}
+.dmg{position:absolute;font-family:'Russo One';font-size:22px;color:#fff;text-shadow:0 2px 0 #000,0 0 12px rgba(255,200,0,.8);pointer-events:none;animation:dmg 1s ease-out forwards;z-index:5;white-space:nowrap}
+.dmg.crit{font-size:34px;color:#ffd97a}
+.dmg.red{color:#ff5544;text-shadow:0 2px 0 #000,0 0 12px rgba(255,0,0,.8)}
+@keyframes dmg{0%{transform:translateY(0) scale(.6);opacity:0}15%{opacity:1;transform:translateY(-10px) scale(1.1)}100%{transform:translateY(-70px) scale(1);opacity:0}}
+.bubble{position:absolute;top:14px;max-width:46%;background:#fff;color:#111;font-size:13px;line-height:1.3;padding:8px 12px;border-radius:12px;opacity:0;transition:opacity .3s;z-index:4;text-align:left}
+.bubble::after{content:"";position:absolute;bottom:-8px;border:8px solid transparent;border-bottom:0}
+.bubble.en{right:8%;border-bottom-right-radius:2px}
+.bubble.en::after{right:18px;border-top-color:#fff}
+.bubble.me{left:8%;border-bottom-left-radius:2px}
+.bubble.me::after{left:18px;border-top-color:#fff}
+.bubble.show{opacity:1}
+.slash{position:absolute;width:90px;height:90px;pointer-events:none;z-index:6;animation:slash .3s ease-out forwards}
+.slash::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,transparent 42%,#fff 48%,#ffd97a 52%,transparent 58%);filter:blur(1px)}
+@keyframes slash{0%{transform:scale(.3) rotate(-30deg);opacity:1}100%{transform:scale(1.4) rotate(20deg);opacity:0}}
+
+.qcard{padding:26px 28px;text-align:left}
 .qcard .tag{font-family:'Russo One';font-size:12px;color:var(--gold);letter-spacing:.2em;margin-bottom:12px}
 .qcard .tag.boss{color:var(--red2);text-shadow:0 0 12px rgba(255,85,68,.6)}
-.qcard h3{font-size:clamp(20px,3vw,28px);line-height:1.25;margin-bottom:22px;text-transform:none;letter-spacing:0}
+.qcard h3{font-size:clamp(19px,2.6vw,26px);line-height:1.25;margin-bottom:20px;text-transform:none;letter-spacing:0}
 .answers{display:grid;gap:12px;grid-template-columns:1fr 1fr}
 @media (max-width:560px){.answers{grid-template-columns:1fr}}
-.ans{text-align:left;padding:16px 18px;background:linear-gradient(180deg,#232a3a,#161b26);border:1px solid var(--line);border-radius:6px;color:var(--text);font:500 16px 'Rubik';cursor:pointer;transition:all .15s;display:flex;gap:12px;align-items:center}
+.ans{text-align:left;padding:14px 18px;background:linear-gradient(180deg,#232a3a,#161b26);border:1px solid var(--line);border-radius:6px;color:var(--text);font:500 16px 'Rubik';cursor:pointer;transition:all .15s;display:flex;gap:12px;align-items:center}
 .ans .key{font-family:'Russo One';font-size:12px;color:var(--gold);width:26px;height:26px;border:1px solid var(--gold);border-radius:4px;display:inline-flex;align-items:center;justify-content:center;flex:none}
 .ans:hover:not([disabled]){border-color:var(--gold);transform:translateX(4px);background:linear-gradient(180deg,#2a3245,#1a2030)}
 .ans[disabled]{cursor:default;opacity:.6}
@@ -124,13 +167,12 @@ h1,h2,h3,.rs{font-family:'Russo One','Rubik',sans-serif;letter-spacing:.04em;tex
 .portrait .ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--muted);font-size:13px;gap:8px;padding:12px}
 .portrait .ph b{font-size:48px}
 .portrait .lvl{position:absolute;left:8px;bottom:8px;background:rgba(0,0,0,.75);border:1px solid var(--gold);color:var(--gold);font-family:'Russo One';font-size:12px;padding:3px 8px;border-radius:3px}
-.portrait .cap{position:absolute;right:8px;bottom:8px;left:auto;background:rgba(0,0,0,.75);color:#fff;font-size:11px;padding:3px 8px;border-radius:3px;max-width:60%;text-align:right}
-.feed{font-size:12px;color:var(--muted);text-align:left;line-height:1.7;min-height:80px}
-.feed div{animation:fadeIn .4s}
-.feed .me{color:var(--green2)}.feed .en{color:var(--red2)}
+.portrait .cap{position:absolute;right:8px;bottom:8px;background:rgba(0,0,0,.75);color:#fff;font-size:11px;padding:3px 8px;border-radius:3px;max-width:60%;text-align:right}
+.feed{font-size:12px;color:var(--muted);text-align:left;line-height:1.6;min-height:80px}
+.feed div{animation:fadeIn .4s;margin-bottom:4px}
+.feed .me{color:var(--green2)}.feed .en{color:var(--red2)}.feed .all{color:#8fc1ff}
 
-/* announcer */
-#announce{position:fixed;left:50%;top:22%;transform:translate(-50%,-50%) scale(.6);font-family:'Russo One';font-size:clamp(34px,8vw,84px);color:#fff;text-shadow:0 0 20px rgba(232,184,74,.9),0 6px 0 #3b2a05,0 0 60px rgba(255,120,0,.6);opacity:0;pointer-events:none;z-index:50;white-space:nowrap;letter-spacing:.06em;text-transform:uppercase}
+#announce{position:fixed;left:50%;top:18%;transform:translate(-50%,-50%) scale(.6);font-family:'Russo One';font-size:clamp(34px,8vw,84px);color:#fff;text-shadow:0 0 20px rgba(232,184,74,.9),0 6px 0 #3b2a05,0 0 60px rgba(255,120,0,.6);opacity:0;pointer-events:none;z-index:50;white-space:nowrap;letter-spacing:.06em;text-transform:uppercase}
 #announce.show{animation:ann 1.6s cubic-bezier(.2,.9,.3,1) forwards}
 #announce.dead{color:#ff5544;text-shadow:0 0 30px rgba(255,0,0,.9),0 6px 0 #300}
 @keyframes ann{0%{opacity:0;transform:translate(-50%,-50%) scale(.4)}15%{opacity:1;transform:translate(-50%,-50%) scale(1.15)}30%{transform:translate(-50%,-50%) scale(1)}80%{opacity:1}100%{opacity:0;transform:translate(-50%,-60%) scale(1.05)}}
@@ -144,7 +186,7 @@ h1,h2,h3,.rs{font-family:'Russo One','Rubik',sans-serif;letter-spacing:.04em;tex
 #respawn.show{display:flex;animation:fadeIn .3s}
 #respawn h2{color:#ff5544;font-size:clamp(28px,6vw,54px)}
 #respawn .t{font-family:'Russo One';font-size:60px;color:#fff;margin-top:8px}
-#respawn p{color:var(--muted);margin-top:10px}
+#respawn p{color:var(--muted);margin-top:10px;max-width:90vw}
 
 /* ===== RESULT ===== */
 #result h1{font-size:clamp(34px,7vw,72px)}
@@ -154,13 +196,16 @@ h1,h2,h3,.rs{font-family:'Russo One','Rubik',sans-serif;letter-spacing:.04em;tex
 .row:last-child{border-bottom:0}
 .row b{font-family:'Russo One';color:var(--gold)}
 .medal{font-size:64px;margin:6px 0}
+.victory{font-size:72px;animation:dance .6s ease-in-out infinite alternate;display:inline-block}
+@keyframes dance{from{transform:rotate(-12deg) translateY(0)}to{transform:rotate(12deg) translateY(-10px)}}
 #treasureNotice{margin-top:26px;display:none;flex-direction:column;align-items:center;gap:12px}
 #treasureNotice.show{display:flex;animation:fadeIn .8s}
 #treasureNotice p{color:var(--gold2);font-family:'Russo One';font-size:16px}
 
 /* ===== TREASURE ===== */
 #treasure{background:radial-gradient(ellipse at center,rgba(60,40,10,.7),var(--bg) 70%)}
-.chest{font-size:clamp(110px,22vw,190px);cursor:pointer;filter:drop-shadow(0 0 40px rgba(232,184,74,.6));transition:transform .2s;position:relative;z-index:2}
+.chest{font-size:clamp(110px,22vw,190px);cursor:pointer;filter:drop-shadow(0 0 40px rgba(232,184,74,.6));transition:transform .2s;position:relative;z-index:2;animation:float 3s ease-in-out infinite}
+.chest:hover{transform:scale(1.06)}
 .chest.wobble{animation:wobble .35s infinite}
 @keyframes wobble{0%,100%{transform:rotate(-4deg) scale(1.02)}50%{transform:rotate(4deg) scale(1.05)}}
 .chest.boom{animation:boom .6s forwards}
@@ -169,13 +214,11 @@ h1,h2,h3,.rs{font-family:'Russo One','Rubik',sans-serif;letter-spacing:.04em;tex
 .rays.on{opacity:1}
 @keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
 #rarity{font-family:'Russo One';font-size:clamp(18px,4vw,30px);margin-top:20px;min-height:40px;letter-spacing:.2em;text-transform:uppercase;z-index:2}
-#treasure .hint{margin-top:18px;color:var(--muted);z-index:2}
-
-/* certificate */
-#cert{position:relative;z-index:3;width:min(720px,94vw);padding:clamp(22px,4vw,44px);border:3px double var(--gold);background:
+#treasure .hint{margin-top:18px;color:var(--muted);z-index:2;max-width:90vw}
+#cert{display:none;position:relative;z-index:3;width:min(720px,94vw);padding:clamp(22px,4vw,44px);border:3px double var(--gold);background:
   radial-gradient(ellipse at top,rgba(232,184,74,.12),transparent 60%),linear-gradient(180deg,#1c1710,#0f0c08);
   box-shadow:0 0 80px rgba(232,184,74,.35),inset 0 0 60px rgba(0,0,0,.6);border-radius:6px;transform:rotateY(90deg);opacity:0}
-#cert.flip{animation:flip 1s cubic-bezier(.2,.8,.2,1) forwards}
+#cert.flip{display:block;animation:flip 1s cubic-bezier(.2,.8,.2,1) forwards}
 @keyframes flip{0%{transform:rotateY(90deg) scale(.8);opacity:0}100%{transform:none;opacity:1}}
 #cert .kicker{font-family:'Russo One';font-size:12px;letter-spacing:.35em;color:var(--gold)}
 #cert h1{font-size:clamp(26px,5vw,46px);margin:10px 0 6px;background:linear-gradient(180deg,#fff6d8,#e8b84a 60%,#8a5e12);-webkit-background-clip:text;background-clip:text;color:transparent}
@@ -188,10 +231,10 @@ h1,h2,h3,.rs{font-family:'Russo One','Rubik',sans-serif;letter-spacing:.04em;tex
 #cert .old::after{content:"";position:absolute;left:-4%;top:52%;width:0;height:6px;background:#fff;box-shadow:0 0 14px #fff;transform:rotate(-8deg);transition:width .5s ease .6s}
 #cert .old.show::after{width:108%}
 #cert .arrow{font-size:32px;color:var(--gold);opacity:0;transition:opacity .4s .9s}
+#cert .old.show ~ .arrow{opacity:1}
 #cert .new{font-family:'Russo One';font-size:clamp(44px,9vw,78px);color:var(--green2);text-shadow:0 0 30px rgba(110,224,122,.8);opacity:0;transform:scale(.4)}
 #cert .new.show{animation:popIn .6s .3s cubic-bezier(.2,1.5,.4,1) forwards}
 @keyframes popIn{to{opacity:1;transform:none}}
-#cert .old.show ~ .arrow{opacity:1}
 #cert .fine{margin-top:16px;font-size:13px;color:var(--muted);line-height:1.6}
 #cert .sign{margin-top:22px;display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
 #cert .sign .s{text-align:left;font-size:13px;color:var(--muted)}
@@ -200,8 +243,8 @@ h1,h2,h3,.rs{font-family:'Russo One','Rubik',sans-serif;letter-spacing:.04em;tex
 #cert .stamp.show{animation:stamp .4s 1.1s cubic-bezier(.3,1.6,.5,1) forwards}
 @keyframes stamp{0%{opacity:0;transform:rotate(-14deg) scale(3)}100%{opacity:.9;transform:rotate(-14deg) scale(1)}}
 #cert .photo{width:110px;height:110px;border-radius:50%;border:3px solid var(--gold);object-fit:cover;margin:0 auto;display:block;box-shadow:0 0 30px rgba(232,184,74,.5)}
-#certActions{margin-top:22px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center;z-index:3;opacity:0}
-#certActions.show{animation:fadeIn 1s 1.6s forwards}
+#certActions{margin-top:22px;display:none;gap:12px;flex-wrap:wrap;justify-content:center;z-index:3;opacity:0}
+#certActions.show{display:flex;animation:fadeIn 1s 1.6s forwards}
 #certActions .btn{padding:12px 24px;font-size:14px}
 canvas#fx{position:fixed;inset:0;pointer-events:none;z-index:60}
 
@@ -209,48 +252,50 @@ canvas#fx{position:fixed;inset:0;pointer-events:none;z-index:60}
   body{background:#fff;color:#000}
   .screen,#fx,.rays,.flash{display:none !important}
   #treasure{display:block !important;position:static;background:none}
-  #cert{transform:none !important;opacity:1 !important;animation:none !important;box-shadow:none;background:#fff;color:#000;margin:0 auto}
+  #cert{display:block !important;transform:none !important;opacity:1 !important;animation:none !important;box-shadow:none;background:#fff;color:#000;margin:0 auto}
   .chest,#rarity,#certActions,#treasure .hint{display:none !important}
 }
 </style>
 </head>
 <body>
 
-<!-- ============ ЭКРАН 1: МЕНЮ ============ -->
+<!-- ============ МЕНЮ ============ -->
 <section class="screen active" id="intro">
   <div class="logo">⚔️</div>
-  <h1>С днём рождения,<br><span id="introName">Именинник</span>!</h1>
+  <h1>С днём рождения,<br><span id="introName">Миша</span>!</h1>
   <div class="ornament"></div>
-  <p class="sub" id="introSub">Ранговая викторина • 1 vs 1 • Мид онли • Без пауз</p>
-  <p class="muted" style="margin-top:8px;font-size:14px">Докажи, что помнишь свою же биографию. Награда ждёт в конце матча. Ливнуть нельзя — Лоу Приорити.</p>
+  <p class="sub" id="introSub"></p>
+  <p class="muted" style="margin-top:8px;font-size:14px">Докажи, что помнишь собственную биографию. Ливнуть нельзя: Лоу Приорити переполнен тобой же.</p>
   <div style="margin-top:34px"><button class="btn" id="findBtn">⚔ Найти игру</button></div>
-  <p class="menu-note">Режим: <b>All Pick</b> • Регион: <b>Россия</b> • Пинг: <b>13 мс</b> • Поведение: <b>10 000</b></p>
+  <p class="menu-note">Режим: <b>All Pick</b> • Регион: <b>Россия</b> • Пинг: <b>13 мс</b> • Поведение: <b>10 000</b> <span class="muted">(куплено за 600 ₽)</span></p>
+  <p class="ticker" id="ticker"></p>
 </section>
 
-<!-- ============ ЭКРАН 2: ПОИСК ============ -->
+<!-- ============ ПОИСК ============ -->
 <section class="screen" id="search">
   <div class="panel box" id="searchBox">
     <p class="rs muted" style="font-size:13px;letter-spacing:.2em">Поиск игры<span class="dots"></span></p>
     <div class="timer" id="searchTimer">0:00</div>
-    <p class="muted" style="font-size:13px;margin-top:6px">Ищем достойного соперника<span class="dots"></span></p>
+    <p class="muted" style="font-size:13px;margin-top:6px" id="searchMsg">Ищем достойного соперника<span class="dots"></span></p>
   </div>
   <div class="panel" id="accept">
     <h2>Матч найден!</h2>
-    <p class="muted">Ранговая викторина • День рождения</p>
+    <p class="muted">Ранговая викторина • День рождения • Ставка: ты сам</p>
     <div style="margin-top:18px"><button class="btn" id="acceptBtn">Принять</button></div>
-    <p class="cnt">Принять автоматически через <span id="acceptCnt">10</span>…</p>
+    <p class="cnt">Если не примешь за <span id="acceptCnt">10</span> сек — это тоже Лоу Приорити</p>
   </div>
 </section>
 
-<!-- ============ ЭКРАН 3: ВЫБОР ГЕРОЯ ============ -->
+<!-- ============ ВЫБОР ГЕРОЯ ============ -->
 <section class="screen" id="pick">
   <h2>Выбери героя</h2>
-  <p class="muted" style="margin-top:6px">Осталось <span id="pickTimer">30</span> сек. Не пикай Пуджа мид. Хотя ладно, ты же везунчик.</p>
+  <p class="muted" style="margin-top:6px">Осталось <span id="pickTimer">30</span> сек. Не пикай Пуджа мид. Хотя ладно, тебе же везёт.</p>
   <div class="heroes" id="heroes"></div>
   <button class="btn gold" id="lockBtn" disabled>Заблокировать выбор</button>
+  <div id="pickSplash"><div class="big"></div><div class="nm"></div></div>
 </section>
 
-<!-- ============ ЭКРАН 4: ЗАГРУЗКА ============ -->
+<!-- ============ ЗАГРУЗКА ============ -->
 <section class="screen" id="loading">
   <div class="logo" id="loadHero">🪝</div>
   <h2 class="gold" id="loadTitle">Загрузка карты</h2>
@@ -258,7 +303,7 @@ canvas#fx{position:fixed;inset:0;pointer-events:none;z-index:60}
   <p class="tip" id="loadTip"></p>
 </section>
 
-<!-- ============ ЭКРАН 5: ВИКТОРИНА ============ -->
+<!-- ============ ВИКТОРИНА ============ -->
 <section class="screen" id="quiz">
   <div class="hud">
     <div class="kda"><span class="k" id="kills">0</span>/<span class="d" id="deaths">0</span>/<span class="a" id="assists">0</span> <span class="muted" style="font-size:11px">K/D/A</span></div>
@@ -267,6 +312,14 @@ canvas#fx{position:fixed;inset:0;pointer-events:none;z-index:60}
   </div>
   <div class="tbar"><i id="tbar"></i></div>
   <div class="quizbody">
+    <div class="arena" id="arena">
+      <div class="river"></div>
+      <div class="ground"></div>
+      <div class="bubble me" id="bubbleMe"></div>
+      <div class="bubble en" id="bubbleEn"></div>
+      <div class="fighter me" id="fMe"><div class="hp"><i id="hpMe"></i></div><div class="spr" id="sprMe">🪝</div><div class="nm" id="nmMe">Герой</div><div class="lvl" id="lvlMe">1</div></div>
+      <div class="fighter en" id="fEn"><div class="hp"><i id="hpEn"></i></div><div class="spr" id="sprEn">👾</div><div class="nm" id="nmEn">Крип</div></div>
+    </div>
     <div class="panel qcard">
       <div class="tag" id="qtag">ВОПРОС 1</div>
       <h3 id="qtext">…</h3>
@@ -279,40 +332,42 @@ canvas#fx{position:fixed;inset:0;pointer-events:none;z-index:60}
   </div>
 </section>
 
-<!-- ============ ЭКРАН 6: РЕЗУЛЬТАТ ============ -->
+<!-- ============ РЕЗУЛЬТАТ ============ -->
 <section class="screen" id="result">
   <div class="medal" id="medal">🏆</div>
   <h1 class="win" id="resTitle">Победа</h1>
   <p class="muted" id="resSub">Силы Света одержали победу</p>
+  <div style="margin-top:10px"><span class="victory" id="victoryHero">🪝</span></div>
   <div class="panel scoreboard" id="scoreboard"></div>
   <div id="treasureNotice">
     <p>🎁 Вам выпало сокровище: «Подарок на день рождения»</p>
+    <p class="muted" style="font-family:'Rubik';font-size:13px">Ну конечно выпало. Тебе всегда выпадает.</p>
     <button class="btn gold" id="toTreasure">Открыть сокровище</button>
   </div>
 </section>
 
-<!-- ============ ЭКРАН 7: СОКРОВИЩЕ ============ -->
+<!-- ============ СОКРОВИЩЕ ============ -->
 <section class="screen" id="treasure">
   <div class="rays" id="rays"></div>
   <div class="chest" id="chest">🎁</div>
   <div id="rarity"></div>
-  <p class="hint" id="chestHint">Нажми на сокровище, чтобы открыть</p>
+  <p class="hint" id="chestHint">Нажми на сокровище. Только не говори потом, что «просто выпало».</p>
   <div id="cert">
     <div class="kicker">◆ Immortal Treasure ◆</div>
     <img class="photo" id="certPhoto" alt="" style="display:none">
     <h1>Aegis Прощения</h1>
     <div class="ar">✦ Arcana • Единственный экземпляр ✦</div>
-    <p class="who">Этим артефактом <b id="certAuthor">лучший друг</b> объявляет,<br>что долг игрока <b id="certName">Именинник</b> <span class="muted" id="certNick"></span> полностью и безвозвратно</p>
+    <p class="who">Этим артефактом <b id="certAuthor"></b> объявляет,<br>что долг игрока <b id="certName"></b> <span class="muted" id="certNick"></span> полностью и безвозвратно</p>
     <div class="debt">
       <span class="old" id="debtOld">4000 ₽</span>
       <span class="arrow">➜</span>
       <span class="new" id="debtNew">ПРОЩЁН</span>
     </div>
-    <p class="fine">Эффект: снимает дебафф «Должник» • Нельзя продать, обменять или вернуть • Не стакается • Действует вечно.<br>Побочные эффекты: +27 MMR к дружбе, уменьшение чувства вины на 100%, рука считается не сломанной.</p>
+    <p class="fine">Эффект: снимает дебафф «Должник» • Нельзя продать, обменять или вернуть • Не стакается • Действует вечно.<br>Побочные эффекты: +27 MMR к дружбе, чувство вины −100%, рука считается не сломанной, мониторка признана словом.</p>
     <div class="sign">
       <div class="s">Выдано в день рождения<br><b id="certDate"></b></div>
       <div class="stamp" id="stamp">ДОЛГ<br>СПИСАН<br>GG WP</div>
-      <div class="s" style="text-align:right">Подпись<br><b id="certSign">ЛД</b></div>
+      <div class="s" style="text-align:right">Подпись<br><b id="certSign"></b></div>
     </div>
   </div>
   <div id="certActions">
@@ -328,115 +383,133 @@ canvas#fx{position:fixed;inset:0;pointer-events:none;z-index:60}
 
 <script>
 /* =====================================================================
-   НАСТРОЙКИ — меняй здесь
+   НАСТРОЙКИ
    ===================================================================== */
 const CONFIG = {
-  friend: "Миша",               // имя друга (как к нему обращаешься)
-  nick: "Орецский Грех",        // ник в Доте
-  age: 27,                      // сколько исполняется
-  author: "Твой ЛД",            // кто прощает долг (подпись) — впиши своё имя
-  debt: 4000,                   // сумма долга
-  // Фотки друга. Можно указать путь к файлу рядом с html ("photo1.jpg")
-  // или вставить base64 ("data:image/jpeg;base64,..."). Подпись необязательна.
+  friend: "Миша",
+  nick: "Орецский Грех",
+  age: 27,
+  author: "Волосатый",
+  debt: 4000,
+  questionTime: 45,             // секунд на вопрос
+  // Фотки. src — путь к файлу рядом с html или base64 "data:image/jpeg;base64,...". cap — подпись (необязательно).
   photos: [
-    // { src: "photo1.jpg", cap: "Легендарная катка 2019" },
+    // { src: "photo1.jpg", cap: "Легендарная катка" },
   ],
-  questionTime: 20,             // секунд на вопрос
 };
 
-/* Вопросы. correct — индекс правильного (с нуля) или массив индексов.
-   boss:true — вопрос-«Рошан» в конце. Личные вопросы помечены personal. */
+/* Вопросы. correct — индекс (с нуля) или массив индексов. enemy — противник на арене, taunt — его реплика. */
 const QUESTIONS = [
-  { q: "Разминка. На улице на Мишу чуть не упала монтировка. Как он её назвал, рассказывая эту историю?",
+  { q: "Разминка. На улице на Мишу чуть не упала монтировка. Как он её назвал в рассказе?",
     a: ["Монтажка", "Мониторка", "Монтёрка", "Молотилка"], correct: 1,
-    ok: "Мониторка. Никто до сих пор не знает, что это, но звучит смертельно опасно.", bad: "Мониторка! Слово, которое сломало мозг лучшему другу." },
+    ok: "Мониторка. Слово года.", bad: "Мониторка. Что это — не знает никто.",
+    enemy: { ico: "🔧", name: "Мониторка", taunt: "Я падаю. На тебя. Снова." } },
   { q: "В каком заведении Миша закалял характер шеф-повара?",
-    a: ["Мишлен-ресторан «Пельменный двор»", "«Пельман»", "Столовая при электротехникуме", "Кухня Рошана"], correct: 1,
-    ok: "Ойййй, как трудно варить пельмени. Я повар, ой как трудно.", bad: "«Пельман». Самая тяжёлая кухня в мире — там варят пельмени." },
+    a: ["Мишлен-ресторан «Пельменный двор»", "«Пельман»", "Столовая электротехникума", "Кухня Рошана"], correct: 1,
+    ok: "Ойййй, как трудно варить пельмени.", bad: "«Пельман». Самая тяжёлая кухня мира.",
+    enemy: { ico: "🥟", name: "Пельмень", taunt: "Свари меня, повар. Если сможешь. Ой как трудно." } },
   { q: "На кого учился Миша до того, как ушёл в высокую кухню?",
     a: ["На уролога", "На электрика", "На монтировщика мониторок", "На тренера по чехарде"], correct: 1,
-    ok: "Электрик, который варит пельмени. Универсальный солдат.", bad: "Электрик. Поэтому пельмени у него всегда под напряжением." },
+    ok: "Электрик. Пельмени под напряжением.", bad: "Электрик. Диплом где-то под пельменями.",
+    enemy: { ico: "⚡", name: "Розетка 220В", taunt: "Ты меня учил три года. Я тебя — за секунду." } },
   { q: "Какое прозвище было у Миши в школе?",
     a: ["Лысый", "Усатый", "Пельмень", "Грех"], correct: 1,
-    ok: "Усатый. Усы были, уважение осталось.", bad: "Усатый. Да, в школе уже тогда." },
+    ok: "Усатый. Уважение осталось.", bad: "Усатый. Да, уже тогда.",
+    enemy: { ico: "👨", name: "Школьные усы", taunt: "Я был на твоей губе раньше, чем MMR." } },
   { q: "Сколько девственниц, по рассказам Миши, было в его жизни?",
     a: ["0", "2", "7", "777"], correct: 2,
-    ok: "Семь. Правда, потом выяснилось, что девственником в этой истории был сам рассказчик.", bad: "Семь! Целых семь. По его словам. Проверка показала другое." },
+    ok: "Семь. Девственником был рассказчик.", bad: "Семь. По рассказам. Факты говорят другое.",
+    enemy: { ico: "👻", name: "Призрак вранья", taunt: "Семь? Я насчитал ноль. Включая тебя." } },
   { q: "Миша заявил, что ему в Доте «выпала жвачка за 600 рублей». Что было на самом деле?",
-    a: ["Реально выпала", "Он просто задонатил", "Подарил тиммейт", "Украл у курьера"], correct: 1,
-    ok: "Задонатил. Слово «выпала» тут несло большую нагрузку.", bad: "Увы. Жвачка была куплена за кровные 600 рублей." },
+    a: ["Реально выпала", "Просто задонатил", "Подарил тиммейт", "Украл у курьера"], correct: 1,
+    ok: "Задонатил. «Выпала» из кошелька.", bad: "Донат. 600 рублей, которые «выпали».",
+    enemy: { ico: "🍬", name: "Жвачка за 600", taunt: "Я тебе не выпала. Ты меня купил. Признай." } },
   { q: "Какая у Миши настоящая суперспособность?",
-    a: ["Невидимость в Лоу Приорити", "Из любого сундука выпадает самая дорогая шмотка", "Варит пельмени за 10 секунд", "Не падает с самоката"], correct: 1,
-    ok: "Везунчик. Поэтому сокровище в конце матча для него — формальность.", bad: "Везение во всём. Кроме самокатов, но об этом позже." },
+    a: ["Невидимость в Лоу Приорити", "Из любого сундука падает самая дорогая шмотка", "Варит пельмени за 10 секунд", "Не падает с самоката"], correct: 1,
+    ok: "Везунчик. Сундук в конце — формальность.", bad: "Везение. Кроме самокатов.",
+    enemy: { ico: "🎰", name: "Сундук", taunt: "Открой меня. Хотя зачем, ты и так знаешь, что там Arcana." } },
   { q: "Что лучший друг сломал Мише во время игры в чехарду?",
     a: ["Самокат", "Руку", "Ничего, так не бывает", "Мониторку"], correct: 1,
-    ok: "Руку. Случайно. Честно-честно. Извинения принимаются до сих пор.", bad: "Руку. Чехарда — контактный вид спорта, оказывается." },
-  { q: "Чем лучший друг «ослепил» Мишу, после чего тот полчаса изображал слепого?",
+    ok: "Руку. Случайно. Извини ещё раз.", bad: "Руку. Чехарда — контактный спорт.",
+    enemy: { ico: "🦴", name: "Чехарда", taunt: "Прыгай. Что может пойти не так. Опять." } },
+  { q: "Чем лучший друг «ослепил» Мишу, после чего тот ЦЕЛЫЙ ДЕНЬ изображал слепого?",
     a: ["Фонариком", "Полотенцем по лицу", "Ультой Зевса", "Горячим пельменем"], correct: 1,
-    ok: "Полотенцем. Актёрская игра была на уровне «Оскара».", bad: "Полотенцем! Миша потом ходил на ощупь и просил поводыря." },
+    ok: "Полотенцем. Актёрская игра — «Оскар».", bad: "Полотенце. День слепоты. Оскар.",
+    enemy: { ico: "🧻", name: "Полотенце", taunt: "Помнишь меня? Твои глаза — точно помнят." } },
   { q: "Как и во сколько Миша приехал к другу в состоянии «ну чуть-чуть выпил»?",
     a: ["На такси в 23:00", "На самокате в 4 утра, с падением", "Пешком в 6 утра", "Телепортнулся свитком"], correct: 1,
-    ok: "Самокат в 4 утра. Самокат пострадал, Миша — чуть больше.", bad: "Самокат, 4 утра, асфальт. Классика жанра." },
+    ok: "Самокат, 4 утра, асфальт.", bad: "Самокат, 4 утра, падение. Классика.",
+    enemy: { ico: "🛴", name: "Самокат", taunt: "4 утра. Ты пьяный. Я — асфальт. Погнали." } },
   { q: "Из-за чего Миша познакомился с медицинской трубкой в весьма неожиданном месте?",
     a: ["Камни в почках", "Аппендицит", "Слишком низкий MMR", "Переел пельменей"], correct: 0,
-    ok: "Камни в почках. Опыт, о котором Миша рассказывает чаще, чем хотелось бы.", bad: "Камни в почках. Трубку он запомнил на всю жизнь." },
+    ok: "Камни в почках. Трубку он помнит.", bad: "Камни. Трубку он не забудет.",
+    enemy: { ico: "🪨", name: "Камень в почке", taunt: "Я маленький. Но ты меня запомнил навсегда." } },
   { q: "Кому Миша доверчиво отправил своё интимное фото в ВК «для консультации»?",
-    a: ["Настоящему врачу из поликлиники", "Рандомному мужику, представившемуся урологом", "Тех. поддержке Dota 2", "Шеф-повару «Пельмана»"], correct: 1,
-    ok: "«Уролог» из ВК до сих пор благодарен за материал.", bad: "Рандомный мужик. Сказал «я уролог» — и этого хватило." },
-  { q: "Что слушал Миша, когда уходил в себя в свой депрессивный период?",
-    a: ["The Neighbourhood", "Шансон", "Саундтрек Dota 2", "Звук кипящих пельменей"], correct: 0,
-    ok: "Нейборхуд. Sweater Weather на репите и взгляд в окно.", bad: "Нейборхуд, конечно. Мы до сих пор смеёмся." },
+    a: ["Врачу из поликлиники", "Рандомному мужику, назвавшемуся урологом", "Тех. поддержке Dota 2", "Шеф-повару «Пельмана»"], correct: 1,
+    ok: "«Уролог» благодарен за материал.", bad: "Рандомный мужик. Сказал «уролог» — и всё.",
+    enemy: { ico: "🩺", name: "Уролог из ВК", taunt: "Здравствуйте, я уролог. Пришлите ещё раз, не загрузилось." } },
   { q: "Какой город Миша любит больше всех после двух лет жизни там?",
     a: ["Москва", "Санкт-Петербург", "Пельман-Сити", "Лоу Приорити"], correct: 1,
-    ok: "Питер. Дожди, разводные мосты и бесконечная любовь.", bad: "Питер! Единственный город, о котором Миша говорит с таким лицом." },
+    ok: "Питер. Любовь с поребриком.", bad: "Питер. Единственная его верная любовь.",
+    enemy: { ico: "🌧️", name: "Питерский дождь", taunt: "Два года я лил на тебя. Ты всё равно вернулся бы." } },
   { q: "Где Миша в ранние годы Доты проводил больше всего времени?",
     a: ["В миде, доминируя", "В Лоу Приорити после очередного лива", "За Рошаном", "На курьере"], correct: 1,
-    ok: "Лоу Приорити — второй дом. Ливнул из игры — и ты снова дома.", bad: "Лоу Приорити. Не получилось — ливнул — наказан. Цикл жизни." },
+    ok: "Лоу Приорити — второй дом.", bad: "Лоу Приорити. Ливнул — наказан — повторить.",
+    enemy: { ico: "⛔", name: "Лоу Приорити", taunt: "С возвращением домой. Твоя кровать ещё тёплая." } },
+  { q: "Миша идёт по улице и слышит сзади: «Мистер… Экскьюз ми…». Что он сделает?",
+    a: ["Убежит", "Сделает вид, что не слышит", "Развернётся и въебёт", "Ответит «Yes, I am»"], correct: 2,
+    ok: "Въебёт. Без вариантов.", bad: "Нет. Он развернётся и въебёт. Так решено.",
+    enemy: { ico: "🕴️", name: "Мистер Икскьюзми", taunt: "Мистер… Экскьюз ми… Мистер… Я сзади." } },
   { boss: true,
     q: "Финальный босс. Кто лучший друг Орецского Греха?",
     a: ["Рошан", "Уролог из ВК", "Тот, кто сломал ему руку в чехарду", "Тот, кто сделал эту викторину"], correct: [2, 3],
-    ok: "Правильно. Босс повержен, руку больше не ломаем.", bad: "Рошан и уролог — хорошие ребята, но нет." },
+    ok: "Босс повержен. Руку больше не ломаем.", bad: "Рошан и уролог — хорошие ребята, но нет.",
+    enemy: { ico: "👹", name: "РОШАН", taunt: "Твой лучший друг — это я. Я хотя бы Аегис даю." } },
 ];
 
 const HEROES = [
   { ico: "👨‍🍳", name: "Орецский Грех", role: "Повар 27 lvl • везёт во всём" },
-  { ico: "🪝", name: "Pudge", role: "Мясник мида" },
+  { ico: "🪝", name: "Pudge", role: "Мясник мида, промах 9 из 10" },
   { ico: "🔮", name: "Invoker", role: "10 кнопок, 0 скилла" },
-  { ico: "❄️", name: "Crystal Maiden", role: "Умирает первой" },
+  { ico: "❄️", name: "Crystal Maiden", role: "Умирает первой. Как ты" },
   { ico: "💣", name: "Techies", role: "Друзей не осталось" },
-  { ico: "🗡️", name: "Phantom Assassin", role: "Крит 2 400" },
   { ico: "🛴", name: "Самокат", role: "Падает в 4 утра" },
 ];
 
 const STREAKS = ["", "FIRST BLOOD", "DOUBLE KILL", "KILLING SPREE", "DOMINATING", "MEGA KILL", "UNSTOPPABLE", "WICKED SICK", "MONSTER KILL", "GODLIKE", "BEYOND GODLIKE"];
 const TIPS = [
-  "Совет: если проигрываешь — это лаги. Если выигрываешь — это скилл.",
-  "Совет: покупай варды. Шутка, этого никто не делает.",
-  "Совет: «изи» пишется после победы, а не до.",
-  "Совет: курьер — тоже человек. Ну почти.",
-  "Совет: если мужик в ВК говорит, что он уролог, — это не повод.",
-  "Совет: пельмени варятся 7 минут. Это очень трудно, спроси у повара.",
-  "Совет: Рошан не твой друг. Твой друг — тот, кто сломал тебе руку в чехарду.",
+  "Совет: если проигрываешь — это лаги. Если выигрываешь — это скилл. Если ливнул — это Лоу Приорити.",
+  "Совет: пельмени варятся 7 минут. Спроси у повара, как это тяжело.",
+  "Совет: если мужик в ВК говорит, что он уролог — это не повод.",
+  "Совет: мониторка — это не монтировка. Или монтировка. Никто не знает.",
+  "Совет: «последняя катка» — это минимум три.",
+  "Совет: не играй в чехарду с Волосатым. Или играй, но с каской.",
+  "Совет: самокат в 4 утра — тоже транспорт. Горизонтальный.",
 ];
+const ALLCHAT = ["изи", "?", "репорт повара", "мониторка упала?", "ливни уже, как раньше", "скинь фото урологу", "семь девственниц, ага", "нуб", "иди пельмени вари", "лоу приорити ждёт", "это тебе не жвачка за 600"];
+const TICKER = ["Орецский Грех вышел из Лоу Приорити. Временно.", "Повар покупает жвачку за 600 ₽... «выпала»", "Самокат ищет нового водителя", "Уролог из ВК онлайн", "«Пельман» объявляет день открытых пельменей", "Мониторка упала. Снова мимо."];
+const RESPAWN_MSG = ["Не ливай. Лоу Приорити и так твой.", "Это всё мониторка.", "Лаги в «Пельмане», понимаем.", "Самокат виноват.", "Пиши урологу, он поможет.", "Семь девственниц не спасут.", "Ойййй как трудно отвечать на вопросы про себя."];
 
 /* ===================================================================== */
 const $ = s => document.querySelector(s);
 const state = { hero: HEROES[0], idx: 0, kills: 0, deaths: 0, assists: 0, gold: 600, streak: 0, maxStreak: 0, timer: null, startTs: 0, clock: null, answered: false, firstBlood: false };
-
 function show(id){ document.querySelectorAll('.screen').forEach(s => s.classList.remove('active')); $('#'+id).classList.add('active'); }
 const wait = ms => new Promise(r => setTimeout(r, ms));
+const rnd = arr => arr[Math.random()*arr.length|0];
 
-/* ---------- Звук (WebAudio, без внешних файлов) ---------- */
+/* ---------- Звук ---------- */
 let AC = null;
 function audio(){ if(!AC){ AC = new (window.AudioContext||window.webkitAudioContext)(); } if(AC.state==='suspended') AC.resume(); return AC; }
 function tone(freq, t=0.15, type='sine', vol=0.2, when=0){
   try{ const ac = audio(); const o = ac.createOscillator(), g = ac.createGain();
-    o.type = type; o.frequency.value = freq; g.gain.value = 0;
-    o.connect(g); g.connect(ac.destination);
-    const s = ac.currentTime + when;
-    g.gain.linearRampToValueAtTime(vol, s + 0.01); g.gain.exponentialRampToValueAtTime(0.0001, s + t);
-    o.start(s); o.stop(s + t + 0.05);
-  }catch(e){}
+    o.type = type; o.frequency.value = freq; g.gain.value = 0; o.connect(g); g.connect(ac.destination);
+    const s = ac.currentTime + when; g.gain.linearRampToValueAtTime(vol, s + 0.01); g.gain.exponentialRampToValueAtTime(0.0001, s + t);
+    o.start(s); o.stop(s + t + 0.05); }catch(e){}
+}
+function noise(t=0.12, vol=0.15, when=0){
+  try{ const ac = audio(); const buf = ac.createBuffer(1, ac.sampleRate*t, ac.sampleRate); const d = buf.getChannelData(0); for(let i=0;i<d.length;i++) d[i] = (Math.random()*2-1)*(1-i/d.length);
+    const src = ac.createBufferSource(); src.buffer = buf; const g = ac.createGain(); g.gain.value = vol; const f = ac.createBiquadFilter(); f.type='lowpass'; f.frequency.value = 1200;
+    src.connect(f); f.connect(g); g.connect(ac.destination); src.start(ac.currentTime + when); }catch(e){}
 }
 const SFX = {
   click(){ tone(900, .06, 'square', .05); },
@@ -449,9 +522,13 @@ const SFX = {
   win(){ [523, 659, 784, 1047, 1319].forEach((f,i) => tone(f, .5, 'triangle', .2, i*.12)); },
   drum(n){ for(let i=0;i<n;i++) tone(90 + Math.random()*20, .08, 'triangle', .25, i*.09); },
   reveal(){ [262, 330, 392, 523, 659, 784, 1047].forEach((f,i) => tone(f, 1.6, 'triangle', .14, i*.05)); tone(1568, 1.8, 'sine', .1, .4); },
+  hit(){ noise(.1, .25); tone(140, .12, 'square', .12); },
+  crit(){ noise(.2, .35); tone(90, .3, 'sawtooth', .2); tone(1800, .15, 'sine', .1, .02); },
+  whoosh(){ noise(.18, .12); },
+  pick(){ [440, 554, 659, 880].forEach((f,i) => tone(f, .35, 'triangle', .18, i*.07)); noise(.3,.1); },
 };
 
-/* ---------- Частицы / конфетти ---------- */
+/* ---------- Частицы ---------- */
 const cvs = $('#fx'), ctx = cvs.getContext('2d'); let parts = [];
 function resize(){ cvs.width = innerWidth; cvs.height = innerHeight; } addEventListener('resize', resize); resize();
 function burst(x, y, n=60, colors=['#e8b84a','#ffd97a','#fff','#6ee07a'], spread=8){
@@ -462,10 +539,7 @@ function confetti(n=200){
   const colors=['#e8b84a','#ffd97a','#6ee07a','#ff5544','#8fc1ff','#c99cff','#fff'];
   for(let i=0;i<n;i++) parts.push({x: Math.random()*cvs.width, y: -20-Math.random()*cvs.height*.5, vx:(Math.random()-.5)*3, vy: 2+Math.random()*4, g:.03, life: 300+Math.random()*200, c: colors[Math.random()*colors.length|0], s: 5+Math.random()*7, r: Math.random()*6, rs:(Math.random()-.5)*.3, conf:true});
 }
-function fireworks(){
-  const x = cvs.width*(0.15+Math.random()*0.7), y = cvs.height*(0.15+Math.random()*0.4);
-  burst(x, y, 90, ['#ffd97a','#ff5544','#6ee07a','#8fc1ff','#c99cff','#fff'], 9); SFX.drum(1);
-}
+function fireworks(){ burst(cvs.width*(0.15+Math.random()*0.7), cvs.height*(0.15+Math.random()*0.4), 90, ['#ffd97a','#ff5544','#6ee07a','#8fc1ff','#c99cff','#fff'], 9); SFX.drum(1); }
 (function loop(){
   ctx.clearRect(0,0,cvs.width,cvs.height);
   parts = parts.filter(p => p.life-- > 0 && p.y < cvs.height+40);
@@ -474,16 +548,13 @@ function fireworks(){
     p.conf ? ctx.fillRect(-p.s/2,-p.s/4,p.s,p.s/2) : ctx.fillRect(-p.s/2,-p.s/2,p.s,p.s); ctx.restore(); }
   requestAnimationFrame(loop);
 })();
-
-function announce(text, dead=false){
-  const el = $('#announce'); el.textContent = text; el.className = dead ? 'dead' : ''; void el.offsetWidth; el.classList.add('show');
-}
+function announce(text, dead=false){ const el = $('#announce'); el.textContent = text; el.className = dead ? 'dead' : ''; void el.offsetWidth; el.classList.add('show'); }
 function flash(kind){ const f = $('#flash'); f.className = 'flash'; void f.offsetWidth; f.classList.add(kind); }
 function shake(){ document.body.classList.remove('shake'); void document.body.offsetWidth; document.body.classList.add('shake'); }
 
 /* ---------- Инициализация ---------- */
 $('#introName').textContent = CONFIG.friend;
-$('#introSub').textContent = `${CONFIG.nick} • ${CONFIG.age} lvl • Повар • Бывший электрик • Без пауз`;
+$('#introSub').textContent = `${CONFIG.nick} • ${CONFIG.age} lvl • Повар • Бывший электрик • Бывший девственник`;
 $('#certName').textContent = CONFIG.friend;
 $('#certNick').textContent = CONFIG.nick ? `(${CONFIG.nick})` : '';
 $('#certAuthor').textContent = CONFIG.author;
@@ -491,12 +562,14 @@ $('#certSign').textContent = CONFIG.author;
 $('#debtOld').textContent = CONFIG.debt.toLocaleString('ru-RU') + ' ₽';
 $('#certDate').textContent = new Date().toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
 if(CONFIG.photos.length){ $('#certPhoto').src = CONFIG.photos[0].src; $('#certPhoto').style.display = 'block'; }
+let ti = 0; $('#ticker').textContent = TICKER[0]; setInterval(() => { ti = (ti+1) % TICKER.length; $('#ticker').textContent = TICKER[ti]; }, 3500);
 
-/* ---------- Поиск игры ---------- */
+/* ---------- Поиск ---------- */
 $('#findBtn').onclick = async () => {
   audio(); SFX.click(); show('search');
-  let s = 0; const t = setInterval(() => { s++; $('#searchTimer').textContent = `0:${String(s).padStart(2,'0')}`; }, 1000);
-  await wait(3200 + Math.random()*1500); clearInterval(t);
+  let s = 0; const msgs = ["Ищем достойного соперника", "Соперников нет, ищем хоть кого-то", "Проверяем, не в Лоу Приорити ли ты", "Нашли уролога, он занят"];
+  const t = setInterval(() => { s++; $('#searchTimer').textContent = `0:${String(s).padStart(2,'0')}`; if(s % 2 === 0) $('#searchMsg').innerHTML = msgs[Math.min(s/2|0, msgs.length-1)] + '<span class="dots"></span>'; }, 1000);
+  await wait(5500 + Math.random()*1500); clearInterval(t);
   $('#searchBox').style.display = 'none'; $('#accept').style.display = 'block'; SFX.found();
   let c = 10; const ct = setInterval(() => { c--; $('#acceptCnt').textContent = c; if(c <= 0){ clearInterval(ct); startPick(); } }, 1000);
   $('#acceptBtn').onclick = () => { clearInterval(ct); SFX.click(); startPick(); };
@@ -507,7 +580,9 @@ function startPick(){
   show('pick'); const box = $('#heroes'); box.innerHTML = '';
   HEROES.forEach(h => { const d = document.createElement('div'); d.className = 'hero';
     d.innerHTML = `<div class="ico">${h.ico}</div><div class="nm">${h.name}</div><div class="rl">${h.role}</div>`;
-    d.onclick = () => { SFX.click(); document.querySelectorAll('.hero').forEach(x => x.classList.remove('sel')); d.classList.add('sel'); state.hero = h; $('#lockBtn').disabled = false; };
+    d.onclick = () => { SFX.pick(); document.querySelectorAll('.hero').forEach(x => x.classList.remove('sel')); d.classList.add('sel'); state.hero = h; $('#lockBtn').disabled = false;
+      const sp = $('#pickSplash'); sp.querySelector('.big').textContent = h.ico; sp.querySelector('.nm').textContent = h.name; sp.classList.remove('go'); void sp.offsetWidth; sp.classList.add('go');
+      burst(innerWidth/2, innerHeight/2, 80, ['#ffd97a','#fff','#e8b84a'], 10); };
     box.appendChild(d); });
   let c = 30; const t = setInterval(() => { c--; $('#pickTimer').textContent = c; if(c <= 0){ clearInterval(t); startLoading(); } }, 1000);
   $('#lockBtn').onclick = () => { clearInterval(t); SFX.ok(); startLoading(); };
@@ -515,21 +590,62 @@ function startPick(){
 
 /* ---------- Загрузка ---------- */
 async function startLoading(){
-  show('loading'); $('#loadHero').textContent = state.hero.ico; $('#loadTip').textContent = TIPS[Math.random()*TIPS.length|0];
+  show('loading'); $('#loadHero').textContent = state.hero.ico; $('#loadTip').textContent = rnd(TIPS);
   const bar = $('#loadBar'); let p = 0;
-  while(p < 100){ p = Math.min(100, p + Math.random()*22); bar.style.width = p + '%'; if(p > 90 && p < 100){ $('#loadTitle').textContent = 'Ждём одного игрока…'; await wait(900); } await wait(250 + Math.random()*300); }
+  while(p < 100){ p = Math.min(100, p + Math.random()*22); bar.style.width = p + '%'; if(p > 90 && p < 100){ $('#loadTitle').textContent = 'Ждём одного игрока… он на самокате'; await wait(1200); } await wait(250 + Math.random()*300); }
   $('#loadTitle').textContent = 'Поехали!'; await wait(500); startQuiz();
 }
+
+/* ---------- Арена ---------- */
+function setHp(who, pct){ $(who === 'me' ? '#hpMe' : '#hpEn').style.width = pct + '%'; }
+function dmgNumber(target, text, cls=''){
+  const r = target.getBoundingClientRect(), a = $('#arena').getBoundingClientRect();
+  const d = document.createElement('div'); d.className = 'dmg ' + cls; d.textContent = text;
+  d.style.left = Math.max(8, Math.min(a.width - 190, r.left - a.left + r.width/2 - 60 + (Math.random()*40-20))) + 'px'; d.style.top = (r.top - a.top - 10) + 'px';
+  $('#arena').appendChild(d); setTimeout(() => d.remove(), 1000);
+}
+function slashAt(target){
+  const r = target.getBoundingClientRect(), a = $('#arena').getBoundingClientRect();
+  const s = document.createElement('div'); s.className = 'slash'; s.style.left = (r.left - a.left + r.width/2 - 45) + 'px'; s.style.top = (r.top - a.top + r.height/2 - 60) + 'px';
+  $('#arena').appendChild(s); setTimeout(() => s.remove(), 400);
+  burst(r.left + r.width/2, r.top + r.height/2, 25, ['#fff','#ffd97a','#ff5544'], 6);
+}
+function say(who, text, ms=3500){ const b = $(who === 'me' ? '#bubbleMe' : '#bubbleEn'); b.textContent = text; b.classList.add('show'); clearTimeout(b._t); b._t = setTimeout(() => b.classList.remove('show'), ms); }
+function hitFx(f){ f.classList.remove('hit'); void f.offsetWidth; f.classList.add('hit'); }
+function spawnEnemy(q){
+  const f = $('#fEn'); f.classList.remove('dead'); f.classList.toggle('boss', !!q.boss); $('#arena').classList.toggle('boss', !!q.boss);
+  $('#sprEn').textContent = q.enemy.ico; $('#nmEn').textContent = q.enemy.name; setHp('en', 100);
+  f.classList.remove('spawn'); void f.offsetWidth; f.classList.add('spawn'); SFX.whoosh();
+  setTimeout(() => say('en', q.enemy.taunt, 5000), 700);
+}
+async function heroAttacks(boss){
+  const me = $('#fMe'), en = $('#fEn'), spr = $('#sprEn');
+  me.classList.add('lunge'); SFX.whoosh(); await wait(260);
+  const hits = boss ? [[22,'-1200'],[22,'-1400'],[22,'-1600'],[34,'CRIT -4000']] : [[35,'-420'],[35,'-560'],[30,'CRIT -1337']];
+  let hp = 100;
+  for(const [d, txt] of hits){ hp -= d; setHp('en', Math.max(0, hp)); hitFx(en); slashAt(spr); dmgNumber(spr, txt, txt.startsWith('CRIT') ? 'crit' : ''); txt.startsWith('CRIT') ? SFX.crit() : SFX.hit(); await wait(230); }
+  en.classList.add('dead'); dmgNumber(spr, boss ? '☠ РОШАН ПОВЕРЖЕН' : '☠', 'crit'); $('#bubbleEn').classList.remove('show');
+  await wait(200); me.classList.remove('lunge');
+}
+async function enemyAttacks(timeout){
+  const me = $('#fMe'), en = $('#fEn'), spr = $('#sprMe');
+  en.classList.add('lunge'); SFX.whoosh(); await wait(260);
+  let hp = 100; for(const [d, txt] of [[45,'-900'],[55,'CRIT -2000']]){ hp -= d; setHp('me', Math.max(0, hp)); hitFx(me); slashAt(spr); dmgNumber(spr, txt, 'red ' + (txt.startsWith('CRIT') ? 'crit' : '')); SFX.hit(); await wait(260); }
+  me.classList.add('dead'); dmgNumber(spr, '☠', 'red crit'); say('en', timeout ? 'Уснул? Или мониторка таки упала?' : rnd(ALLCHAT), 2500);
+  await wait(200); en.classList.remove('lunge');
+}
+function heroRevive(){ const me = $('#fMe'); me.classList.remove('dead'); setHp('me', 100); me.classList.remove('spawn'); void me.offsetWidth; me.classList.add('spawn'); }
 
 /* ---------- Викторина ---------- */
 function startQuiz(){
   show('quiz'); state.startTs = Date.now();
+  $('#sprMe').textContent = state.hero.ico; $('#nmMe').textContent = state.hero.name; $('#fMe').classList.add('spawn');
   state.clock = setInterval(() => { const s = (Date.now() - state.startTs)/1000|0; $('#clock').textContent = `${String(s/60|0).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`; }, 500);
-  feed(`<span class="me">${state.hero.name}</span> вышел на линию. Удачи, ${CONFIG.friend}!`);
+  feed(`<span class="me">${state.hero.name}</span> вышел на линию. Удачи, ${CONFIG.friend}. Она тебе и так всегда выпадает.`);
   renderQuestion();
 }
 function feed(html){ const f = $('#feed'); const d = document.createElement('div'); d.innerHTML = html; f.prepend(d); while(f.children.length > 4) f.lastChild.remove(); }
-function updateHud(){ $('#kills').textContent = state.kills; $('#deaths').textContent = state.deaths; $('#assists').textContent = state.assists; $('#goldCnt').textContent = state.gold; }
+function updateHud(){ $('#kills').textContent = state.kills; $('#deaths').textContent = state.deaths; $('#assists').textContent = state.assists; $('#goldCnt').textContent = state.gold; $('#lvlMe').textContent = state.idx + 1; }
 function renderPortrait(){
   const p = $('#portrait'); const ph = CONFIG.photos.length ? CONFIG.photos[state.idx % CONFIG.photos.length] : null;
   p.innerHTML = ph
@@ -539,15 +655,16 @@ function renderPortrait(){
 function renderQuestion(){
   const q = QUESTIONS[state.idx]; state.answered = false;
   $('#qn').textContent = `${state.idx + 1} / ${QUESTIONS.length}`;
-  const tag = $('#qtag'); tag.className = 'tag' + (q.boss ? ' boss' : ''); tag.textContent = q.boss ? '☠ РОШАН • ФИНАЛЬНЫЙ ВОПРОС' : `ВОПРОС ${state.idx + 1}${q.personal ? ' • ЛИЧНОЕ' : ''}`;
+  const tag = $('#qtag'); tag.className = 'tag' + (q.boss ? ' boss' : ''); tag.textContent = q.boss ? '☠ РОШАН • ФИНАЛЬНЫЙ ВОПРОС' : `ВОПРОС ${state.idx + 1}`;
   $('#qtext').textContent = q.q;
   const box = $('#answers'); box.innerHTML = '';
   q.a.forEach((a, i) => { const b = document.createElement('button'); b.className = 'ans'; b.innerHTML = `<span class="key">${'QWER'[i]}</span><span>${a}</span>`; b.onclick = () => answer(i); box.appendChild(b); });
-  renderPortrait(); updateHud();
-  // таймер
+  renderPortrait(); updateHud(); spawnEnemy(q);
   let left = CONFIG.questionTime; const bar = $('#tbar'); bar.style.transition = 'none'; bar.style.width = '100%'; void bar.offsetWidth; bar.style.transition = 'width 1s linear';
   clearInterval(state.timer);
-  state.timer = setInterval(() => { left--; bar.style.width = (left / CONFIG.questionTime * 100) + '%'; if(left <= 5 && left > 0) SFX.tick(); if(left <= 0){ clearInterval(state.timer); answer(-1); } }, 1000);
+  state.timer = setInterval(() => { left--; bar.style.width = (left / CONFIG.questionTime * 100) + '%';
+    if(left === Math.floor(CONFIG.questionTime/2)) say('en', rnd(['Долго думаешь. Пельмени переварятся.', 'Ты серьёзно не помнишь?', 'Мониторка уже в полёте.', 'Уролог ждёт ответа.']), 3000);
+    if(left <= 5 && left > 0) SFX.tick(); if(left <= 0){ clearInterval(state.timer); answer(-1); } }, 1000);
 }
 window.addEventListener('keydown', e => { if(!$('#quiz').classList.contains('active') || state.answered) return; const i = 'QWER'.indexOf(e.key.toUpperCase()); if(i >= 0) answer(i); });
 
@@ -558,22 +675,26 @@ async function answer(i){
   corr.forEach(c => btns[c].classList.add('ok')); if(!ok && i >= 0) btns[i].classList.add('bad');
   if(ok){
     state.kills++; state.streak++; state.maxStreak = Math.max(state.maxStreak, state.streak); state.gold += q.boss ? 1000 : 200 + state.streak*50;
-    flash('green'); const r = btns[i].getBoundingClientRect(); burst(r.left + r.width/2, r.top + r.height/2, 50);
+    flash('green'); const r = btns[i].getBoundingClientRect(); burst(r.left + r.width/2, r.top + r.height/2, 40);
+    say('me', q.ok, 3000);
+    await heroAttacks(q.boss);
     const label = !state.firstBlood ? 'FIRST BLOOD' : (STREAKS[Math.min(state.streak, 10)] || 'BEYOND GODLIKE');
     state.firstBlood = true; announce(q.boss && state.streak >= 5 ? 'RAMPAGE!' : label); state.streak >= 3 ? SFX.streak() : SFX.ok();
-    feed(`<span class="me">${state.hero.name}</span> убил <span class="en">Вопрос ${state.idx + 1}</span>. ${q.ok || ''}`);
+    feed(`<span class="me">${state.hero.name}</span> убил <span class="en">${q.enemy.name}</span>. ${q.ok}`);
+    updateHud(); await wait(1500);
   } else {
     state.deaths++; state.streak = 0; state.gold = Math.max(0, state.gold - 150);
+    await enemyAttacks(i < 0);
     flash('red'); shake(); SFX.dead(); announce(i < 0 ? 'ВРЕМЯ ВЫШЛО' : 'ВАС УБИЛИ', true);
-    feed(`<span class="en">Вопрос ${state.idx + 1}</span> убил <span class="me">${state.hero.name}</span>. ${q.bad || 'Бывает.'}`);
+    feed(`<span class="en">${q.enemy.name}</span> убил <span class="me">${state.hero.name}</span>. ${q.bad}`);
+    feed(`<span class="all">[ALL] ${q.enemy.name}:</span> ${rnd(ALLCHAT)}`);
+    updateHud(); await wait(1500); await respawn(); heroRevive(); await wait(300);
   }
-  updateHud(); await wait(1400);
-  if(!ok){ await respawn(); }
   state.idx++;
   if(state.idx < QUESTIONS.length) renderQuestion(); else finish();
 }
 async function respawn(){
-  const r = $('#respawn'); r.classList.add('show'); $('#respawnMsg').textContent = ['Не ливай, Лоу Приорити и так переполнен.', 'Это всё мониторка.', 'Это всё лаги в «Пельмане».', 'Включи Нейборхуд и подумай о жизни.', 'Самокат тут ни при чём.'][Math.random()*5|0];
+  const r = $('#respawn'); r.classList.add('show'); $('#respawnMsg').textContent = rnd(RESPAWN_MSG);
   for(let c = 3; c > 0; c--){ $('#respawnT').textContent = c; SFX.tick(); await wait(700); }
   r.classList.remove('show');
 }
@@ -583,10 +704,9 @@ async function finish(){
   clearInterval(state.clock); show('result'); state.assists = Math.max(0, QUESTIONS.length - state.kills - state.deaths);
   const acc = Math.round(state.kills / QUESTIONS.length * 100);
   const rank = acc === 100 ? ['👑', 'Immortal'] : acc >= 80 ? ['💎', 'Divine'] : acc >= 60 ? ['🔱', 'Ancient'] : acc >= 40 ? ['🛡', 'Legend'] : ['🥉', 'Лоу Приорити, но любимый'];
-  $('#medal').textContent = rank[0]; SFX.win(); confetti(220); for(let i = 0; i < 5; i++) setTimeout(fireworks, i*450);
-  const secs = (Date.now() - state.startTs)/1000|0;
-  const mmr = 25 + state.maxStreak*5;
-  $('#resSub').textContent = acc === 100 ? 'Безупречно. Рошан даже не успел ответить.' : acc >= 60 ? 'Силы Света одержали победу' : 'Победа. Со скрипом, но победа — сегодня проигравших нет.';
+  $('#medal').textContent = rank[0]; $('#victoryHero').textContent = state.hero.ico; SFX.win(); confetti(220); for(let i = 0; i < 5; i++) setTimeout(fireworks, i*450);
+  const secs = (Date.now() - state.startTs)/1000|0; const mmr = 25 + state.maxStreak*5;
+  $('#resSub').textContent = acc === 100 ? 'Безупречно. Рошан даже не понял, что произошло. Ты точно не задонатил?' : acc >= 80 ? 'Силы Света одержали победу. Почти без фида.' : acc >= 60 ? 'Победа. Со скрипом, как самокат в 4 утра.' : 'Победа. Ты помнишь свою жизнь хуже, чем мы. Но сегодня проигравших нет.';
   $('#scoreboard').innerHTML = `
     <div class="row"><span>Герой</span><b>${state.hero.ico} ${state.hero.name}</b></div>
     <div class="row"><span>K / D / A</span><b>${state.kills} / ${state.deaths} / ${state.assists}</b></div>
@@ -594,6 +714,7 @@ async function finish(){
     <div class="row"><span>Лучшая серия</span><b>${state.maxStreak} (${STREAKS[Math.min(state.maxStreak,10)] || '—'})</b></div>
     <div class="row"><span>Золото</span><b>🪙 ${state.gold}</b></div>
     <div class="row"><span>Длительность</span><b>${String(secs/60|0).padStart(2,'0')}:${String(secs%60).padStart(2,'0')}</b></div>
+    <div class="row"><span>Ливов</span><b style="color:var(--green2)">0 (впервые)</b></div>
     <div class="row"><span>Ранг</span><b>${rank[0]} ${rank[1]}</b></div>
     <div class="row"><span>Рейтинг</span><b style="color:var(--green2)">+${mmr} MMR</b></div>`;
   await wait(2600); $('#treasureNotice').classList.add('show'); SFX.found();
@@ -604,16 +725,15 @@ $('#toTreasure').onclick = () => { SFX.click(); show('treasure'); };
 const RARITIES = [['Common','#b0c3d9'],['Uncommon','#5e98d9'],['Rare','#4b69ff'],['Mythical','#8847ff'],['Legendary','#d32ce6'],['Immortal','#e4ae39'],['ARCANA','#ade55c']];
 let opened = false;
 $('#chest').onclick = async function(){
-  if(opened) return; opened = true; const chest = this; $('#chestHint').textContent = ''; chest.classList.add('wobble'); $('#rays').classList.add('on');
+  if(opened) return; opened = true; const chest = this; $('#chestHint').textContent = 'Барабанная дробь… ну, ты знаешь, что будет Arcana.'; chest.classList.add('wobble'); $('#rays').classList.add('on');
   SFX.drum(18);
   for(let i = 0; i < RARITIES.length; i++){ const [n, c] = RARITIES[i]; $('#rarity').textContent = n; $('#rarity').style.color = c; $('#rarity').style.textShadow = `0 0 20px ${c}`; tone(400 + i*120, .15, 'square', .08); await wait(220 + i*110); }
   await wait(500); chest.classList.remove('wobble'); chest.classList.add('boom'); SFX.reveal();
   burst(innerWidth/2, innerHeight/2, 220, ['#ffd97a','#fff','#ade55c','#e8b84a'], 14);
-  await wait(500); chest.style.display = 'none'; $('#rarity').style.display = 'none';
+  await wait(500); chest.style.display = 'none'; $('#rarity').style.display = 'none'; $('#chestHint').style.display = 'none';
   const cert = $('#cert'); cert.classList.add('flip'); confetti(300);
   await wait(900); $('#debtOld').classList.add('show'); await wait(1300); $('#debtNew').classList.add('show'); $('#stamp').classList.add('show'); $('#certActions').classList.add('show');
   SFX.win(); for(let i = 0; i < 10; i++) setTimeout(fireworks, 600 + i*500);
-  // салют продолжается
   setInterval(() => { if(Math.random() < .5) fireworks(); }, 1800);
 };
 $('#againBtn').onclick = () => location.reload();
